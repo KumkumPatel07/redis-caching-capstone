@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Digital Redis Caching Property Management System"
+    >
+
+    <title>Redis Caching System</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+    <div>
+        <h1>Redis Caching</h1>
+        <p>Property Data Management System</p>
+    </div>
+
+    <div class="status" aria-live="polite">
+        <span id="cacheStatus">Checking cache...</span>
+    </div>
+</header>
+
+
+<main class="container">
+
+    <section class="card">
+        <div class="section-header">
+            <div>
+                <h2>Property Listings</h2>
+                <p>Manage and retrieve property information.</p>
+            </div>
+
+            <button
+                id="refreshBtn"
+                class="button"
+                type="button"
+                aria-label="Refresh property listings"
+            >
+                Refresh
+            </button>
+        </div>
+
+        <div class="search-area">
+
+            <label for="searchInput">
+                Search properties
+            </label>
+
+            <div class="search-row">
+
+                <input
+                    id="searchInput"
+                    type="search"
+                    placeholder="Search by title or location"
+                    aria-label="Search properties"
+                >
+
+                <button
+                    id="searchBtn"
+                    class="button"
+                    type="button"
+                    aria-label="Search properties"
+                >
+                    Search
+                </button>
+
+            </div>
+        </div>
+
+        <div
+            id="loading"
+            class="loading hidden"
+            aria-live="polite"
+        >
+            Loading...
+        </div>
+
+        <div
+            id="error"
+            class="error hidden"
+            role="alert"
+        ></div>
+
+        <div
+            id="emptyState"
+            class="empty hidden"
+        >
+            No data found.
+        </div>
+
+        <div
+            id="propertyList"
+            class="property-list"
+            aria-live="polite"
+        ></div>
+
+    </section>
+
+
+    <section class="card">
+
+        <h2>Add Property</h2>
+
+        <form id="propertyForm" novalidate>
+
+            <div class="form-group">
+                <label for="title">Property Title</label>
+
+                <input
+                    id="title"
+                    name="title"
+                    type="text"
+                    required
+                    aria-required="true"
+                >
+            </div>
+
+
+            <div class="form-group">
+                <label for="location">Location</label>
+
+                <input
+                    id="location"
+                    name="location"
+                    type="text"
+                    required
+                    aria-required="true"
+                >
+            </div>
+
+
+            <div class="form-group">
+                <label for="price">Price</label>
+
+                <input
+                    id="price"
+                    name="price"
+                    type="number"
+                    min="0"
+                    required
+                    aria-required="true"
+                >
+            </div>
+
+
+            <div class="form-group">
+                <label for="status">Status</label>
+
+                <select id="status" name="status">
+                    <option value="available">Available</option>
+                    <option value="pending">Pending</option>
+                    <option value="sold">Sold</option>
+                </select>
+            </div>
+
+
+            <button
+                class="button primary"
+                type="submit"
+                aria-label="Add property"
+            >
+                Add Property
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <section class="card">
+
+        <div class="section-header">
+
+            <div>
+                <h2>Redis Cache</h2>
+                <p>Current cached records.</p>
+            </div>
+
+            <button
+                id="clearCacheBtn"
+                class="button danger"
+                type="button"
+                aria-label="Clear Redis cache"
+            >
+                Clear Cache
+            </button>
+
+        </div>
+
+        <div
+            id="cacheList"
+            class="cache-list"
+        ></div>
+
+    </section>
+
+</main>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>

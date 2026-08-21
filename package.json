@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node backend/server.js",
     "dev": "node backend/server.js",
-    "build": "echo 'No build step required'"
+    "build": "node -e \"const fs=require('fs'); fs.mkdirSync('public', {recursive:true}); ['index.html', 'style.css', 'script.js'].forEach(f => { if (fs.existsSync(f)) fs.copyFileSync(f, 'public/' + f); });\""
   },
   "dependencies": {
     "cors": "^2.8.5",

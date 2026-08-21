@@ -38,8 +38,10 @@ app.get("/api/health", (req, res) => {
     });
 });
 
-// Serve frontend static files from root directory
+// Serve frontend static files from public and root directory
 const rootDir = path.resolve(__dirname, "..");
+const publicDir = path.join(rootDir, "public");
+app.use(express.static(publicDir));
 app.use(express.static(rootDir));
 
 // SPA fallback for root or page requests
@@ -50,7 +52,14 @@ app.get("*", (req, res, next) => {
             message: "API endpoint not found."
         });
     }
-    res.sendFile(path.join(rootDir, "index.html"));
+    const publicIndex = path.join(publicDir, "index.html");
+    const rootIndex = path.join(rootDir, "index.html");
+    const fs = require("fs");
+    if (fs.existsSync(publicIndex)) {
+        res.sendFile(publicIndex);
+    } else {
+        res.sendFile(rootIndex);
+    }
 });
 
 // Global error handler
