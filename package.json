@@ -1,0 +1,19 @@
+{
+  "name": "redis-caching-capstone",
+  "version": "1.0.0",
+  "description": "Property Data Management System with Redis Caching",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "node backend/server.js",
+    "build": "echo 'No build step required'"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "helmet": "^8.0.0",
+    "pg": "^8.13.3",
+    "redis": "^4.7.0"
+  }
+}

@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:5000/api";
+const API_URL = "/api";
 
 const propertyList = document.getElementById("propertyList");
 const loading = document.getElementById("loading");
